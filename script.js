@@ -114,8 +114,8 @@ window.addEventListener('DOMContentLoaded', () => {
           <span>#${q.id} – ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
           <div>
             <button class="btn-load"   data-id="${q.id}"><i class="fas fa-sync-alt"></i> Charger</button>
-            <button class="btn-generate" data-id="${q.id}"><i class="fas fa-file-export"></i> Génér</button>
-            <button class="btn-del"      data-id="${q.id}"><i class="fas fa-trash-alt"></i> Suppr</button>
+            <button class="btn-generate" data-id="${q.id}"><i class="fas fa-file-export"></i> Générer</button>
+            <button class="btn-del"      data-id="${q.id}"><i class="fas fa-trash-alt"></i> Supprimé</button>
           </div>
         `;
         ul.appendChild(li);
