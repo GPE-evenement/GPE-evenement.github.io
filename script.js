@@ -115,7 +115,6 @@ window.addEventListener('DOMContentLoaded', () => {
           <div>
             <button class="btn-load"   data-id="${q.id}"><i class="fas fa-sync-alt"></i> Charger</button>
             <button class="btn-generate" data-id="${q.id}"><i class="fas fa-file-export"></i> Génér</button>
-            <button class="btn-sign"     data-id="${q.id}"><i class="fas fa-pen-fancy"></i> Signé</button>
             <button class="btn-del"      data-id="${q.id}"><i class="fas fa-trash-alt"></i> Suppr</button>
           </div>
         `;
