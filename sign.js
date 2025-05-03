@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    // Récupération de l'ID du devis dans l'URL
+    // 1) Récupérer l'ID du devis depuis l'URL
     const params  = new URLSearchParams(window.location.search);
     const quoteId = params.get('quoteId');
     if (!quoteId) {
@@ -7,34 +7,37 @@ window.addEventListener('DOMContentLoaded', () => {
       return;
     }
   
-    // Chargement de l'historique
-    const history = JSON.parse(localStorage.getItem('quotes')||'[]');
+    // 2) Charger l'historique et trouver le devis
+    const history = JSON.parse(localStorage.getItem('quotes') || '[]');
     const q       = history.find(x => String(x.id) === quoteId);
     if (!q) {
       document.body.textContent = 'Devis introuvable dans l’historique';
       return;
     }
   
-    // Affichage du devis
+    // 3) Afficher le devis
     document.getElementById('quote-display').innerHTML = generateQuoteHTML(q);
   
+    // 4) Initialiser SignaturePad
     const padDir    = new SignaturePad(document.getElementById('sig-dir'));
     const padClient = new SignaturePad(document.getElementById('sig-client'));
   
-    // Pré‑chargement des signatures existantes
+    // 5) Pré‑charger les anciennes signatures
     if (q.sigDirData)    padDir.fromDataURL(q.sigDirData);
     if (q.sigClientData) padClient.fromDataURL(q.sigClientData);
   
+    // 6) Boutons effacer
     document.getElementById('clear-dir')   .onclick = () => padDir.clear();
     document.getElementById('clear-client').onclick = () => padClient.clear();
   
+    // 7) Valider & Télécharger
     document.getElementById('confirm-sign').onclick = () => {
       if (padDir.isEmpty() || padClient.isEmpty()) {
         alert('Les deux signatures sont requises');
         return;
       }
   
-      // Injection des images finales
+      // Injecter les images finales
       const fs = document.getElementById('final-signatures');
       fs.innerHTML = `
         <div style="flex:1; text-align:center;">
@@ -47,15 +50,15 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
   
-      // Capture + téléchargement
+      // Capturer et télécharger
       html2canvas(document.getElementById('to-capture')).then(canvas => {
         const link = document.createElement('a');
         link.download = `devis_signed_${quoteId}.png`;
         link.href     = canvas.toDataURL();
         link.click();
       })
+      // 8) Sauvegarder les signatures
       .finally(() => {
-        // Sauvegarde des signatures dans l'historique
         const idx = history.findIndex(h => String(h.id) === quoteId);
         if (idx > -1) {
           history[idx].sigDirData    = padDir.toDataURL();
