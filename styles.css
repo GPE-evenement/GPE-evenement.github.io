@@ -1,4 +1,4 @@
-/* styles.css v1.0.12 */
+/* styles.css v1.0.13 */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,13 +30,17 @@ body {
   position: relative;
   z-index: 1000;
 }
+
 .sidebar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
 }
+
+/* bouton mobile caché par défaut */
 .toggle-btn-mobile {
+  display: none;      /* on ne l’affiche jamais en desktop */
   background: #2563eb;
   border: none;
   color: #fff;
@@ -45,13 +49,33 @@ body {
   cursor: pointer;
   font-size: 1.4rem;
   transition: background 0.2s, transform 0.2s;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .toggle-btn-mobile:hover {
   background: #1e40af;
   transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .toggle-btn-mobile {
+    display: flex;      /* ici seulement on l’affiche */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .sidebar.visible {
+    transform: translateX(0);
+  }
 }
 .menu {
   list-style: none;

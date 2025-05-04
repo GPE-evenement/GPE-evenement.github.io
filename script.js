@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     sidebar.classList.toggle('visible');
   }
   
-  btnMobile.addEventListener('click',  toggle);
+  btnMobile.addEventListener('click', toggle);
 
   let items   = JSON.parse(localStorage.getItem('currentQuote')) || [];
   let history = JSON.parse(localStorage.getItem('quotes')) || [];
@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const tbody     = document.querySelector('#items-table tbody');
   const totalEl   = document.getElementById('grand-total');
 
-  // Affiche la page principale (Devis / Historique / Documents)
   function showPage(page) {
     pages.forEach(p => p.classList.remove('active'));
     document.getElementById(page).classList.add('active');
@@ -38,18 +37,17 @@ window.addEventListener('DOMContentLoaded', () => {
     if (page === 'historique') renderHistory();
   }
 
-  // Initialisation de la nav principale
+
   menuItems.forEach(li => {
     li.addEventListener('click', () => {
       showPage(li.dataset.page);
     });
   });
 
-  // Page initiale (hash ou premier onglet)
+
   const initial = location.hash ? location.hash.slice(1) : menuItems[0].dataset.page;
   showPage(initial);
 
-  // --- Devis ---
   document.getElementById('add-item').addEventListener('click', () => {
     items.push({ produit: '', price: 0, qty: 1 });
     saveCurrent();
@@ -133,7 +131,7 @@ window.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('quotes', JSON.stringify(history));
   }
 
-  // --- Historique ---
+
   function renderHistory() {
     const ul = document.getElementById('devis-list');
     ul.innerHTML = '';
@@ -176,25 +174,20 @@ window.addEventListener('DOMContentLoaded', () => {
     renderHistory();
   }
 
-  // --- Navigation interne Documents (Réglementation / Procédure) ---
   function setupDocNav() {
     const tabs     = document.querySelectorAll('.doc-nav li');
     const articles = document.querySelectorAll('.doc-article');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // 1) bascule d'onglet actif
         document.querySelector('.doc-nav .doc-active').classList.remove('doc-active');
         tab.classList.add('doc-active');
-        // 2) masque tous les articles
         articles.forEach(a => a.style.display = 'none');
-        // 3) affiche l'article ciblé
         document.getElementById(tab.dataset.doc).style.display = '';
       });
     });
   }
 
-  // --- Génération via html2canvas ---
   function regenQuoteByData(q) {
     const cont = document.createElement('div');
     Object.assign(cont.style, {
@@ -289,6 +282,5 @@ window.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // Lancement de la navigation interne Documents
   setupDocNav();
 });
