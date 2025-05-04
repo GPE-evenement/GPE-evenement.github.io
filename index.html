@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +9,7 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <link rel="stylesheet" href="styles.css?v=1.0.3">
+  <link rel="stylesheet" href="style.css?v=1.0.7">
   <!-- html2canvas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -18,15 +19,17 @@
     <nav class="sidebar">
       <div class="brand"><h2>GPE</h2></div>
       <ul class="menu">
-        <li class="active" data-page="devis">Devis</li>
         <li data-page="historique">Historique</li>
+        <li data-page="devis">Devis</li>
+        <li data-page="document">Documents</li>
       </ul>
     </nav>
 
     <!-- Main Content -->
     <main class="main-content">
+
       <!-- Devis Page -->
-      <section id="devis" class="page active">
+      <section id="devis" class="page">
         <header><h1>Créer un nouveau devis</h1></header>
         <div class="client-info">
           <input type="text" id="client-firstname" placeholder="Prénom client"/>
@@ -52,7 +55,7 @@
           <tfoot>
             <tr>
               <td colspan="3">TOTAL GÉNÉRAL</td>
-              <td id="grand-total">0 €</td>
+              <td id="grand-total">0 €</td>
               <td></td>
             </tr>
           </tfoot>
@@ -64,12 +67,180 @@
         <header><h1>Historique des devis</h1></header>
         <ul id="devis-list"></ul>
       </section>
+
+      <!-- Documents Page -->
+      <section id="document" class="page">
+        <header><h1>Documents</h1></header>
+
+        <!-- Barre de navigation interne -->
+        <nav class="doc-nav">
+          <ul>
+            <li class="doc-active" data-doc="reglementation">Réglementation</li>
+            <li data-doc="procedure">Procédure</li>
+            <li data-doc="zone-tarifaire">Zone Tarifaire</li>
+          </ul>
+        </nav>
+
+        <div class="doc-content">
+          <!-- Règlementation -->
+          <article id="reglementation" class="doc-article">
+            <h2>RÈGLEMENT INTÉRIEUR DE GRAND PARIS ÉVÉNEMENT</h2>
+            <p>
+              Conformément aux dispositions du Code du travail (articles L.1321-1 à L.1321-6),
+              le présent règlement intérieur fixe les règles relatives :
+            </p>
+            <ul>
+              <li>à la discipline au sein de l’entreprise,</li>
+              <li>à l’hygiène et à la sécurité,</li>
+              <li>à l’organisation du travail,</li>
+              <li>aux droits et devoirs des salariés.</li>
+            </ul>
+            <p>
+              Il s’applique à l’ensemble du personnel de Grand Paris Événement,
+              y compris les stagiaires, alternants, CDD, CDI, intérimaires et prestataires
+              intervenant dans les locaux de l’entreprise.
+            </p>
+            <h3>ARTICLE 1 – HORAIRES</h3>
+            <p>Vous devez être présent lorsque la hiérarchie vous le demande, notamment lors des événements organisés où nous souhaitons être le plus nombreux possible.</p>
+            <h3>ARTICLE 2 – DISCIPLINE</h3>
+            <p>Un comportement exemplaire est exigé : aucun manque de respect ne sera toléré, que ce soit envers un membre de l’équipe ou des civils. En cas de manquement : avertissement suivi d’un éventuel licenciement.</p>
+            <h3>ARTICLE 3 – HYGIÈNE ET SÉCURITÉ</h3>
+            <p>Une hygiène irréprochable est exigée pour préserver notre image. En matière de sécurité, gérer les rassemblements et intervenir rapidement en cas de danger.</p>
+            <h3>ARTICLE 4 – ORGANISATION</h3>
+            <p>Un briefing général précède chaque événement ; appliquer strictement les consignes et rester à son poste.</p>
+            <h3>ARTICLE 5 – DROITS ET DEVOIRS</h3>
+            <p>Chaque salarié bénéficie de droits (dialogue ouvert, prise en compte des remontées) et doit assumer des devoirs (responsabilités, respect des consignes et de l’équipe).</p>
+          </article>
+
+          <!-- Procédure -->
+          <article id="procedure" class="doc-article" style="display:none;">
+            <h2>PROCÉDURE DE GRAND PARIS ÉVÉNEMENT</h2>
+            <p><em>Procédure d’organisation d’un événement — Grand Paris Événement.</em></p>
+            <ol>
+              <li><strong>Définition du projet</strong><br>
+                Suite au ticket ouvert, cibler le type d’événement via le formulaire. Communication client, attentes et budget. Si interne, vérifier disponibilité.
+              </li>
+              <li><strong>Validation du projet</strong><br>
+                Discussion en équipe (type, date, lieu, budget, effectif). Décider de la faisabilité.
+              </li>
+              <li><strong>Recherche et réservation du lieu</strong><br>
+                <em>Tiers :</em> vérifier la disponibilité, sinon proposer une alternative.<br>
+                <em>Interne :</em> trouver un lieu et convenir d’une date.
+              </li>
+              <li><strong>Déclarations administratives</strong><br>
+                Informer les autorités (préfecture, mairie). Tirage au sort → huissier.
+              </li>
+              <li><strong>Communication</strong><br>
+                Promotion : médias, réseaux, flyers. Supplément si médiatisation.
+              </li>
+              <li><strong>Jour J</strong><br>
+                Tenir compte du briefing, assurer sécurité et fluidité.
+              </li>
+              <li><strong>Évaluation post-événement</strong><br>
+                Débriefing, points forts et axes d’amélioration.
+              </li>
+            </ol>
+          </article>
+
+          <!-- Zone Tarifaire -->
+          <article id="zone-tarifaire" class="doc-article" style="display:none;">
+            <h2>ZONE TARIFAIRE</h2>
+            <h3>Grilles Tarifaires <small>(sur les devis, obligatoire)</small></h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Frais de dossier</td><td>15 000 €</td></tr>
+                <tr><td>Démarche admini</td><td>15 000 €</td></tr>
+                <tr><td>Main d’œuvre</td><td>5 000 € / pers</td></tr>
+                <tr><td>Frais de service</td><td>6 000 €</td></tr>
+                <tr><td>Frais de location</td><td>6 000 €</td></tr>
+                <tr><td>Pénalité</td><td>10 000 € – 45 000 €</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Activités proposées par le GPE <small>(+ FD)</small></h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th><th>Prix groupe (6 pers)</th></tr></thead>
+              <tbody>
+                <tr><td>Aérienne</td><td>8 000 €</td><td>6 400 € / pers</td></tr>
+                <tr><td>Nautique</td><td>4 000 €</td><td>3 200 € / pers</td></tr>
+                <tr><td>Routière</td><td>5 000 €</td><td>4 000 € / pers</td></tr>
+                <tr><td>Sportive</td><td>2 500 €</td><td>2 000 € / pers</td></tr>
+                <tr><td>Urbaine</td><td>2 500 €</td><td>2 000 € / pers</td></tr>
+                <tr><td>Sous-marine</td><td>15 000 €</td><td>12 000 € / pers</td></tr>
+                <tr><td>Touristique</td><td>5 000 €</td><td>4 000 € / pers</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Prestations proposées</h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Mariages LV 1</td><td>20 000 €</td></tr>
+                <tr><td>Mariages LV 2</td><td>40 000 €</td></tr>
+                <tr><td>Vie courante</td><td>30 000 €</td></tr>
+                <tr><td>Soirée à thème</td><td>20 000 €</td></tr>
+                <tr><td>Divers</td><td>40 000 €</td></tr>
+                <tr><td>Vie professionnelle</td><td>30 000 €</td></tr>
+                <tr><td>Effectif mobilisé</td><td>5 000 € / pers</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Tarif déplacement</h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Paris</td><td>5 000 €</td></tr>
+                <tr><td>Cergy [Ouessant]</td><td>12 000 €</td></tr>
+                <tr><td>Essonne [91,92,93,78,77]</td><td>10 000 €</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Location de salle</h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Boxe</td><td>10 000 €</td></tr>
+                <tr><td>Concert</td><td>150 000 €</td></tr>
+                <tr><td>Mariage</td><td>40 000 €</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Location véhicule / bateau</h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Véhicule</td><td>70 000 €</td></tr>
+                <tr><td>Bateau</td><td>120 000 €</td></tr>
+                <tr><td>Avion</td><td>150 000 €</td></tr>
+                <tr><td>Pilote</td><td>5 000 €</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Location DJ</h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Matériel</td><td>20 000 €</td></tr>
+                <tr><td>DJ</td><td>5 000 €</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Restauration</h3>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <tbody>
+                <tr><td>Serveur</td><td>5 000 € / pers</td></tr>
+                <tr><td>Nourriture</td><td>1 000 € / 10 000 €</td></tr>
+                <tr><td>Boisson</td><td>+ 1 000 € / 10 000 €</td></tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </section>
+
     </main>
   </div>
-  <script>
-    const ts = Date.now();
-    document.write(`<link rel="stylesheet" href="style.css?ts=${ts}" />`);
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
