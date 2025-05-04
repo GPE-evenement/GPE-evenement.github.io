@@ -1,4 +1,4 @@
-/* styles.css v1.0.11 */
+/* styles.css v1.0.12 */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,26 +27,16 @@ body {
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
   position: relative;
-  transform: translateX(0);
   z-index: 1000;
 }
-.sidebar.hidden {
-  transform: translateX(-100%);
-}
-.sidebar.visible {
-  transform: translateX(0);
-}
-
-/* Sidebar header with toggle button */
 .sidebar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
 }
-.toggle-btn {
+.toggle-btn-mobile {
   background: #2563eb;
   border: none;
   color: #fff;
@@ -59,7 +49,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.toggle-btn:hover {
+.toggle-btn-mobile:hover {
   background: #1e40af;
   transform: rotate(90deg);
 }
@@ -90,23 +80,6 @@ body {
   background: #f8fafc;
   padding: 2rem;
   position: relative;
-}
-
-/* Mobile toggle button */
-.toggle-btn-mobile {
-  display: none;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  background: #2563eb;
-  border: none;
-  color: #fff;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  font-size: 1.3rem;
-  z-index: 1101; /* above .sidebar */
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 /* Pages */
@@ -332,20 +305,23 @@ header h1 {
   color: #1f2937;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .toggle-btn {
-    display: none;
-  }
-  .toggle-btn-mobile {
-    display: block;
-  }
-  .sidebar {
-    position: absolute;
-    height: 100vh;
-    transform: translateX(-100%);
-  }
-  .sidebar.visible {
-    transform: translateX(0);
-  }
+/* Zone Tarifaire — tableau consolidé */
+#zone-tarifaire table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+#zone-tarifaire th,
+#zone-tarifaire td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+#zone-tarifaire th {
+  background: #f3f4f6;
+}
+#zone-tarifaire .section-header td {
+  background: #f9fafb;
+  font-weight: bold;
+  text-align: center;
 }

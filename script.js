@@ -3,14 +3,12 @@
 window.addEventListener('DOMContentLoaded', () => {
 
   const sidebar = document.querySelector('.sidebar');
-  const btnDesktop = document.getElementById('toggle-sidebar');
   const btnMobile  = document.getElementById('toggle-sidebar-mobile');
   
   function toggle() {
     sidebar.classList.toggle('visible');
   }
   
-  btnDesktop.addEventListener('click', toggle);
   btnMobile.addEventListener('click',  toggle);
 
   let items   = JSON.parse(localStorage.getItem('currentQuote')) || [];

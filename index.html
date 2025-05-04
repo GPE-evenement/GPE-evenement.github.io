@@ -19,9 +19,6 @@
     <nav class="sidebar">
       <div class="sidebar-header">
         <div class="brand"><h2>GPE</h2></div>
-        <button id="toggle-sidebar" class="toggle-btn" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
       </div>
       <ul class="menu">
         <li data-page="historique">Historique</li>
@@ -150,103 +147,65 @@
               </li>
             </ol>
           </article>
-          <!-- Zone Tarifaire -->
           <article id="zone-tarifaire" class="doc-article" style="display:none;">
             <h2>ZONE TARIFAIRE</h2>
-            <h3>Grilles Tarifaires <small>(sur les devis, obligatoire)</small></h3>
             <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>Catégorie</th>
+                  <th>Intitulé</th>
+                  <th>Prix unitaire</th>
+                  <th>Prix groupe (6 pers)</th>
+                </tr>
+              </thead>
               <tbody>
-                <tr><td>Frais de dossier</td><td>15 000 €</td></tr>
-                <tr><td>Démarche admini</td><td>15 000 €</td></tr>
-                <tr><td>Main d’œuvre</td><td>5 000 € / pers</td></tr>
-                <tr><td>Frais de service</td><td>6 000 €</td></tr>
-                <tr><td>Frais de location</td><td>6 000 €</td></tr>
-                <tr><td>Pénalité</td><td>10 000 € – 45 000 €</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Frais fixes</td></tr>
+                <tr><td></td><td>Frais de dossier</td><td>15 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Démarche admini</td><td>15 000 €</td><td>–</td></tr>
 
-            <h3>Activités proposées par le GPE <small>(+ FD)</small></h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th><th>Prix groupe (6 pers)</th></tr></thead>
-              <tbody>
-                <tr><td>Aérienne</td><td>8 000 €</td><td>6 400 € / pers</td></tr>
-                <tr><td>Nautique</td><td>4 000 €</td><td>3 200 € / pers</td></tr>
-                <tr><td>Routière</td><td>5 000 €</td><td>4 000 € / pers</td></tr>
-                <tr><td>Sportive</td><td>2 500 €</td><td>2 000 € / pers</td></tr>
-                <tr><td>Urbaine</td><td>2 500 €</td><td>2 000 € / pers</td></tr>
-                <tr><td>Sous-marine</td><td>15 000 €</td><td>12 000 € / pers</td></tr>
-                <tr><td>Touristique</td><td>5 000 €</td><td>4 000 € / pers</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Main d’œuvre</td></tr>
+                <tr><td></td><td>Main d’œuvre</td><td>5 000 € / pers</td><td>–</td></tr>
 
-            <h3>Prestations proposées</h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
-              <tbody>
-                <tr><td>Mariages LV 1</td><td>20 000 €</td></tr>
-                <tr><td>Mariages LV 2</td><td>40 000 €</td></tr>
-                <tr><td>Vie courante</td><td>30 000 €</td></tr>
-                <tr><td>Soirée à thème</td><td>20 000 €</td></tr>
-                <tr><td>Divers</td><td>40 000 €</td></tr>
-                <tr><td>Vie professionnelle</td><td>30 000 €</td></tr>
-                <tr><td>Effectif mobilisé</td><td>5 000 € / pers</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Frais de service & location</td></tr>
+                <tr><td></td><td>Frais de service</td><td>6 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Frais de location</td><td>6 000 €</td><td>–</td></tr>
 
-            <h3>Tarif déplacement</h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
-              <tbody>
-                <tr><td>Paris</td><td>5 000 €</td></tr>
-                <tr><td>Cergy [Ouessant]</td><td>12 000 €</td></tr>
-                <tr><td>Essonne [91,92,93,78,77]</td><td>10 000 €</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Pénalités</td></tr>
+                <tr><td></td><td>Pénalité</td><td>10 000 € – 45 000 €</td><td>–</td></tr>
 
-            <h3>Location de salle</h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
-              <tbody>
-                <tr><td>Boxe</td><td>10 000 €</td></tr>
-                <tr><td>Concert</td><td>150 000 €</td></tr>
-                <tr><td>Mariage</td><td>40 000 €</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Activités proposées</td></tr>
+                <tr><td></td><td>Aérienne</td><td>8 000 €</td><td>6 400 € / pers</td></tr>
+                <tr><td></td><td>Nautique</td><td>4 000 €</td><td>3 200 € / pers</td></tr>
+                <tr><td></td><td>Routière</td><td>5 000 €</td><td>4 000 € / pers</td></tr>
+                <tr><td></td><td>Sportive</td><td>2 500 €</td><td>2 000 € / pers</td></tr>
+                <tr><td></td><td>Urbaine</td><td>2 500 €</td><td>2 000 € / pers</td></tr>
+                <tr><td></td><td>Sous-marine</td><td>15 000 €</td><td>12 000 € / pers</td></tr>
+                <tr><td></td><td>Touristique</td><td>5 000 €</td><td>4 000 € / pers</td></tr>
 
-            <h3>Location véhicule / bateau</h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
-              <tbody>
-                <tr><td>Véhicule</td><td>70 000 €</td></tr>
-                <tr><td>Bateau</td><td>120 000 €</td></tr>
-                <tr><td>Avion</td><td>150 000 €</td></tr>
-                <tr><td>Pilote</td><td>5 000 €</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Location de salle</td></tr>
+                <tr><td></td><td>Boxe</td><td>10 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Concert</td><td>150 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Mariage</td><td>40 000 €</td><td>–</td></tr>
 
-            <h3>Location DJ</h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
-              <tbody>
-                <tr><td>Matériel</td><td>20 000 €</td></tr>
-                <tr><td>DJ</td><td>5 000 €</td></tr>
-              </tbody>
-            </table>
+                <tr class="section-header"><td colspan="4">Location véhicule / bateau</td></tr>
+                <tr><td></td><td>Véhicule</td><td>70 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Bateau</td><td>120 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Avion</td><td>150 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Pilote</td><td>5 000 €</td><td>–</td></tr>
 
-            <h3>Restauration</h3>
-            <table>
-              <thead><tr><th>Intitulé</th><th>Prix unitaire</th></tr></thead>
-              <tbody>
-                <tr><td>Serveur</td><td>5 000 € / pers</td></tr>
-                <tr><td>Nourriture</td><td>1 000 € / 10 000 €</td></tr>
-                <tr><td>Boisson</td><td>+ 1 000 € / 10 000 €</td></tr>
+                <tr class="section-header"><td colspan="4">Location DJ</td></tr>
+                <tr><td></td><td>Matériel</td><td>20 000 €</td><td>–</td></tr>
+                <tr><td></td><td>DJ</td><td>5 000 €</td><td>–</td></tr>
+
+                <tr class="section-header"><td colspan="4">Restauration</td></tr>
+                <tr><td></td><td>Serveur</td><td>5 000 € / pers</td><td>–</td></tr>
+                <tr><td></td><td>Nourriture</td><td>1 000 € / 10 000 €</td><td>–</td></tr>
+                <tr><td></td><td>Boisson</td><td>+ 1 000 € / 10 000 €</td><td>–</td></tr>
               </tbody>
             </table>
           </article>
         </div>
       </section>
-
     </main>
   </div>
   <script src="script.js"></script>
