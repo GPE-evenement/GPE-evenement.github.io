@@ -269,7 +269,8 @@ window.addEventListener('DOMContentLoaded', () => {
       <div style="margin-top:1.5rem; font-style:italic;">
         <p><strong>LA DIRECTION</strong></p>
         <p style="margin-bottom:1.5rem;">
-          Nous restons à votre entière disposition pour toute précision ou ajustement concernant ce devis...
+          Nous restons à votre entière disposition pour toute précision ou ajustement concernant ce devis. En vous remerciant chaleureusement pour votre confiance, nous serions ravis de mettre notre savoir-faire à votre service afin de faire de votre événement un moment unique, à la hauteur de vos attentes. Au plaisir de collaborer avec vous pour concrétiser ce projet."
+
         </p>
         <p>
           <strong>Grand Paris Évènement</strong> // Rue de Saint Charles · 75000 Paris
