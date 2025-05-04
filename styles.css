@@ -13,13 +13,11 @@ body {
   display: flex;
 }
 
-
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
 }
-
 
 .sidebar {
   background: #1f2937;
@@ -28,7 +26,17 @@ body {
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
 }
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar-toggle {
+  display: none;
+  margin-bottom: 1rem;
+}
+
 .brand h2 {
   font-size: 1.75rem;
   text-align: center;
@@ -55,14 +63,12 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .main-content {
   flex: 1;
   overflow-y: auto;
   background: #f8fafc;
   padding: 2rem;
 }
-
 
 .page {
   display: none;
@@ -72,12 +78,10 @@ body {
   display: block;
 }
 
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 
 header h1 {
   font-size: 1.75rem;
@@ -87,9 +91,10 @@ header h1 {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 .client-info input {
-  flex: 1;
+  flex: 1 1 200px;
   padding: 0.5rem;
   border: 1px solid #d1d5db;
   border-radius: 0.375rem;
@@ -102,9 +107,10 @@ header h1 {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 .controls button {
-  flex: 1;
+  flex: 1 1 120px;
   background: #2563eb;
   color: #fff;
   border: none;
@@ -177,7 +183,6 @@ header h1 {
   background: #b91c1c;
 }
 
-
 #devis-list {
   list-style: none;
   margin-top: 1rem;
@@ -235,7 +240,6 @@ header h1 {
   background: #dc2626;
 }
 
-
 .doc-nav ul {
   list-style: none;
   display: flex;
@@ -260,7 +264,6 @@ header h1 {
   color: #fff;
   box-shadow: 0 4px 12px rgba(37,99,235,0.3);
 }
-
 
 .doc-article {
   background: #fff;
@@ -300,8 +303,7 @@ header h1 {
   color: #1f2937;
 }
 
-
-.doc-article table {
+doc-article table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1.5rem;
@@ -314,4 +316,20 @@ header h1 {
 }
 .doc-article thead {
   background: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+    transform: translateX(-100%);
+  }
+  .sidebar-toggle {
+    display: block;
+  }
+  .sidebar.visible {
+    transform: translateX(0);
+  }
 }

@@ -9,7 +9,7 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
-  <link rel="stylesheet" href="styles.css?v=1.0.7">
+  <link rel="stylesheet" href="styles.css?v=1.0.8">
   <!-- html2canvas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -17,10 +17,13 @@
   <div class="app">
     <!-- Sidebar -->
     <nav class="sidebar">
+      <div class="sidebar-toggle">
+        <button id="toggle-sidebar"><i class="fas fa-bars"></i></button>
+      </div>
       <div class="brand"><h2>GPE</h2></div>
       <ul class="menu">
         <li data-page="historique">Historique</li>
-        <li data-page="devis">Devis</li>
+        <li data-page="devis" class="active">Devis</li>
         <li data-page="document">Documents</li>
       </ul>
     </nav>
@@ -29,7 +32,7 @@
     <main class="main-content">
 
       <!-- Devis Page -->
-      <section id="devis" class="page">
+      <section id="devis" class="page active">
         <header><h1>Créer un nouveau devis</h1></header>
         <div class="client-info">
           <input type="text" id="client-firstname" placeholder="Prénom client"/>
