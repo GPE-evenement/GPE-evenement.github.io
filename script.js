@@ -1,14 +1,18 @@
-// script.js
+
 
 window.addEventListener('DOMContentLoaded', () => {
 
   const sidebar = document.querySelector('.sidebar');
-  const toggleBtn = document.getElementById('toggle-sidebar');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('visible');
-    });
+  const btnDesktop = document.getElementById('toggle-sidebar');
+  const btnMobile  = document.getElementById('toggle-sidebar-mobile');
+  
+  function toggle() {
+    sidebar.classList.toggle('visible');
   }
+  
+  btnDesktop.addEventListener('click', toggle);
+  btnMobile.addEventListener('click',  toggle);
+
   let items   = JSON.parse(localStorage.getItem('currentQuote')) || [];
   let history = JSON.parse(localStorage.getItem('quotes')) || [];
 

@@ -9,7 +9,7 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
-  <link rel="stylesheet" href="styles.css?v=1.0.8">
+  <link rel="stylesheet" href="styles.css?v=1.0.12">
   <!-- html2canvas -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
@@ -17,10 +17,12 @@
   <div class="app">
     <!-- Sidebar -->
     <nav class="sidebar">
-      <div class="sidebar-toggle">
-        <button id="toggle-sidebar"><i class="fas fa-bars"></i></button>
+      <div class="sidebar-header">
+        <div class="brand"><h2>GPE</h2></div>
+        <button id="toggle-sidebar" class="toggle-btn" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
-      <div class="brand"><h2>GPE</h2></div>
       <ul class="menu">
         <li data-page="historique">Historique</li>
         <li data-page="devis" class="active">Devis</li>
@@ -30,6 +32,10 @@
 
     <!-- Main Content -->
     <main class="main-content">
+      <!-- Toggle button (desktop visible >768px, mobile visible ≤768px) -->
+      <button id="toggle-sidebar-mobile" class="toggle-btn-mobile" aria-label="Toggle sidebar">
+        <i class="fas fa-bars"></i>
+      </button>
 
       <!-- Devis Page -->
       <section id="devis" class="page active">
@@ -110,7 +116,7 @@
             <h3>ARTICLE 3 – HYGIÈNE ET SÉCURITÉ</h3>
             <p>Une hygiène irréprochable est exigée pour préserver notre image. En matière de sécurité, gérer les rassemblements et intervenir rapidement en cas de danger.</p>
             <h3>ARTICLE 4 – ORGANISATION</h3>
-            <p>Un briefing général précède chaque événement ; appliquer strictement les consignes et rester à son poste.</p>
+            <p>Un briefing général précède chaque événement ; appliquer strictement les consignes et rester à son poste.</p>
             <h3>ARTICLE 5 – DROITS ET DEVOIRS</h3>
             <p>Chaque salarié bénéficie de droits (dialogue ouvert, prise en compte des remontées) et doit assumer des devoirs (responsabilités, respect des consignes et de l’équipe).</p>
           </article>
@@ -127,16 +133,16 @@
                 Discussion en équipe (type, date, lieu, budget, effectif). Décider de la faisabilité.
               </li>
               <li><strong>Recherche et réservation du lieu</strong><br>
-                <em>Tiers :</em> vérifier la disponibilité, sinon proposer une alternative.<br>
-                <em>Interne :</em> trouver un lieu et convenir d’une date.
+                <em>Tiers :</em> vérifier la disponibilité, sinon proposer une alternative.<br>
+                <em>Interne :</em> trouver un lieu et convenir d’une date.
               </li>
               <li><strong>Déclarations administratives</strong><br>
                 Informer les autorités (préfecture, mairie). Tirage au sort → huissier.
               </li>
               <li><strong>Communication</strong><br>
-                Promotion : médias, réseaux, flyers. Supplément si médiatisation.
+                Promotion : médias, réseaux, flyers. Supplément si médiatisation.
               </li>
-              <li><strong>Jour J</strong><br>
+              <li><strong>Jour J</strong><br>
                 Tenir compte du briefing, assurer sécurité et fluidité.
               </li>
               <li><strong>Évaluation post-événement</strong><br>
@@ -144,7 +150,6 @@
               </li>
             </ol>
           </article>
-
           <!-- Zone Tarifaire -->
           <article id="zone-tarifaire" class="doc-article" style="display:none;">
             <h2>ZONE TARIFAIRE</h2>

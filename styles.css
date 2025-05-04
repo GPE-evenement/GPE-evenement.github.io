@@ -1,3 +1,4 @@
+/* styles.css v1.0.11 */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,13 +13,13 @@ body {
   color: #2c3e50;
   display: flex;
 }
-
 .app {
   display: flex;
   width: 100%;
   height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
   background: #1f2937;
   color: #f9fafb;
@@ -27,21 +28,40 @@ body {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
+  position: relative;
+  transform: translateX(0);
+  z-index: 1000;
 }
 .sidebar.hidden {
   transform: translateX(-100%);
 }
-
-.sidebar-toggle {
-  display: none;
-  margin-bottom: 1rem;
+.sidebar.visible {
+  transform: translateX(0);
 }
 
-.brand h2 {
-  font-size: 1.75rem;
-  text-align: center;
-  letter-spacing: 2px;
+/* Sidebar header with toggle button */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
+}
+.toggle-btn {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggle-btn:hover {
+  background: #1e40af;
+  transform: rotate(90deg);
 }
 .menu {
   list-style: none;
@@ -63,13 +83,33 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Main content */
 .main-content {
   flex: 1;
   overflow-y: auto;
   background: #f8fafc;
   padding: 2rem;
+  position: relative;
 }
 
+/* Mobile toggle button */
+.toggle-btn-mobile {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  z-index: 1101; /* above .sidebar */
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Pages */
 .page {
   display: none;
   animation: fadeIn 0.4s ease-in-out;
@@ -83,6 +123,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Devis form */
 header h1 {
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
@@ -183,6 +224,7 @@ header h1 {
   background: #b91c1c;
 }
 
+/* Historique */
 #devis-list {
   list-style: none;
   margin-top: 1rem;
@@ -218,28 +260,14 @@ header h1 {
 #devis-list li button:hover {
   transform: translateY(-1px);
 }
-.btn-load {
-  background: #10b981;
-  color: #fff;
-}
-.btn-load:hover {
-  background: #059669;
-}
-.btn-generate {
-  background: #2563eb;
-  color: #fff;
-}
-.btn-generate:hover {
-  background: #1e40af;
-}
-.btn-del {
-  background: #ef4444;
-  color: #fff;
-}
-.btn-del:hover {
-  background: #dc2626;
-}
+.btn-load { background: #10b981; color: #fff; }
+.btn-load:hover { background: #059669; }
+.btn-generate { background: #2563eb; color: #fff; }
+.btn-generate:hover { background: #1e40af; }
+.btn-del { background: #ef4444; color: #fff; }
+.btn-del:hover { background: #dc2626; }
 
+/* Documents Navigation */
 .doc-nav ul {
   list-style: none;
   display: flex;
@@ -265,6 +293,7 @@ header h1 {
   box-shadow: 0 4px 12px rgba(37,99,235,0.3);
 }
 
+/* Documents Content */
 .doc-article {
   background: #fff;
   padding: 2.5rem;
@@ -303,31 +332,18 @@ header h1 {
   color: #1f2937;
 }
 
-doc-article table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
-}
-.doc-article th,
-.doc-article td {
-  border: 1px solid #ddd;
-  padding: 0.75rem;
-  text-align: left;
-}
-.doc-article thead {
-  background: #f3f4f6;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
+  .toggle-btn {
+    display: none;
+  }
+  .toggle-btn-mobile {
+    display: block;
+  }
   .sidebar {
     position: absolute;
-    z-index: 1000;
     height: 100vh;
     transform: translateX(-100%);
-  }
-  .sidebar-toggle {
-    display: block;
   }
   .sidebar.visible {
     transform: translateX(0);
