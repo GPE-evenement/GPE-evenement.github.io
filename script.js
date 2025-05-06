@@ -1,24 +1,15 @@
-
-
 window.addEventListener('DOMContentLoaded', () => {
-
   const sidebar = document.querySelector('.sidebar');
-  const btnMobile  = document.getElementById('toggle-sidebar-mobile');
-  
-  function toggle() {
-    sidebar.classList.toggle('visible');
-  }
-  
+  const btnMobile = document.getElementById('toggle-sidebar-mobile');
+  function toggle() { sidebar.classList.toggle('visible'); }
   btnMobile.addEventListener('click', toggle);
 
   let items   = JSON.parse(localStorage.getItem('currentQuote')) || [];
   let history = JSON.parse(localStorage.getItem('quotes')) || [];
-
   const inpFirst = document.getElementById('client-firstname');
   const inpLast  = document.getElementById('client-lastname');
   const inpPhone = document.getElementById('client-phone');
   const inpTitle = document.getElementById('quote-title');
-
   const menuItems = document.querySelectorAll('.menu li');
   const pages     = document.querySelectorAll('.page');
   const tbody     = document.querySelector('#items-table tbody');
@@ -27,38 +18,29 @@ window.addEventListener('DOMContentLoaded', () => {
   function showPage(page) {
     pages.forEach(p => p.classList.remove('active'));
     document.getElementById(page).classList.add('active');
-
     menuItems.forEach(li => li.classList.remove('active'));
     document.querySelector(`.menu li[data-page="${page}"]`).classList.add('active');
-
     window.location.hash = page;
-
     if (page === 'devis')      renderTable();
     if (page === 'historique') renderHistory();
   }
-
-
-  menuItems.forEach(li => {
-    li.addEventListener('click', () => {
-      showPage(li.dataset.page);
-    });
-  });
-
-
-  const initial = location.hash ? location.hash.slice(1) : menuItems[0].dataset.page;
-  showPage(initial);
+  menuItems.forEach(li => li.addEventListener('click', () => showPage(li.dataset.page)));
+  showPage(location.hash ? location.hash.slice(1) : menuItems[0].dataset.page);
 
   document.getElementById('add-item').addEventListener('click', () => {
-    items.push({ produit: '', price: 0, qty: 1 });
-    saveCurrent();
-    appendRow(items.length - 1);
-    updateTotals();
-    focusLast();
+    items.push({ produit: '', price: 0, qty: 1 }); saveCurrent(); renderTable(); focusLast();
   });
+
+  // NOUVEAU : bouton réduction
+  document.getElementById('add-discount').addEventListener('click', () => {
+    const m = parseFloat(prompt('Montant de la réduction en €', '0'));
+    if (isNaN(m) || m <= 0) return;
+    items.push({ produit: 'Réduction', price: -m, qty: 1 });
+    saveCurrent(); renderTable();
+  });
+
   document.getElementById('generate-image').addEventListener('click', () => {
-    saveCurrent();
-    saveQuote();
-    regenQuoteByData(history[history.length - 1]);
+    saveCurrent(); saveQuote(); regenQuoteByData(history[history.length - 1]);
   });
 
   function renderTable() {
@@ -66,7 +48,6 @@ window.addEventListener('DOMContentLoaded', () => {
     items.forEach((_, i) => appendRow(i));
     updateTotals();
   }
-
   function appendRow(i) {
     const it = items[i];
     const tr = document.createElement('tr');
@@ -78,59 +59,32 @@ window.addEventListener('DOMContentLoaded', () => {
       <td class="actions"><button class="btn-delete" data-index="${i}"><i class="fas fa-trash-alt"></i></button></td>
     `;
     tbody.appendChild(tr);
-
     ['prod','price','qty'].forEach(type => {
       tr.querySelector(`.inp-${type}`).addEventListener('input', e => {
         const idx = e.target.dataset.index;
-        if (type === 'prod')  items[idx].produit = e.target.value;
-        if (type === 'price') items[idx].price   = parseFloat(e.target.value) || 0;
-        if (type === 'qty')    items[idx].qty     = parseInt(e.target.value)   || 0;
-        e.target.closest('tr').querySelector('.cell-total')
-          .textContent = (items[idx].price * items[idx].qty).toLocaleString() + ' €';
-        updateTotals();
-        saveCurrent();
+        if (type==='prod') items[idx].produit = e.target.value;
+        if (type==='price') items[idx].price   = parseFloat(e.target.value)||0;
+        if (type==='qty')    items[idx].qty     = parseInt(e.target.value)||0;
+        e.target.closest('tr').querySelector('.cell-total').textContent = (items[idx].price*items[idx].qty).toLocaleString()+' €';
+        updateTotals(); saveCurrent();
       });
     });
-
     tr.querySelector('.btn-delete').addEventListener('click', e => {
-      items.splice(e.target.closest('button').dataset.index, 1);
-      saveCurrent();
-      renderTable();
+      items.splice(e.target.closest('button').dataset.index,1);
+      saveCurrent(); renderTable();
     });
   }
-
   function updateTotals() {
-    totalEl.textContent = items.reduce((s, it) => s + it.price * it.qty, 0)
-      .toLocaleString() + ' €';
+    totalEl.textContent = items.reduce((s,it)=>s+it.price*it.qty,0).toLocaleString()+' €';
   }
-
   function focusLast() {
-    const last = tbody.querySelector('tr:last-child input');
-    if (last) last.focus();
+    const last = tbody.querySelector('tr:last-child input'); if(last) last.focus();
   }
-
-  function saveCurrent() {
-    localStorage.setItem('currentQuote', JSON.stringify(items));
-  }
-
+  function saveCurrent() { localStorage.setItem('currentQuote',JSON.stringify(items)); }
   function saveQuote() {
-    const q = {
-      id: Date.now(),
-      date: Date.now(),
-      items: JSON.parse(JSON.stringify(items)),
-      client: {
-        first: inpFirst.value,
-        last:  inpLast.value,
-        phone: inpPhone.value,
-        title: inpTitle.value
-      },
-      sigDirData: null,
-      sigClientData: null
-    };
-    history.push(q);
-    localStorage.setItem('quotes', JSON.stringify(history));
+    const q={id:Date.now(),date:Date.now(),items:JSON.parse(JSON.stringify(items)),client:{first:inpFirst.value,last:inpLast.value,phone:inpPhone.value,title:inpTitle.value},sigDirData:null,sigClientData:null};
+    history.push(q); localStorage.setItem('quotes',JSON.stringify(history));
   }
-
 
   function renderHistory() {
     const ul = document.getElementById('devis-list');
