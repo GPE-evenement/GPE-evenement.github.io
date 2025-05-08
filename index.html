@@ -4,17 +4,14 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GPE</title>
-  <!-- FontAwesome -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
-  <link rel="stylesheet" href="style.css?v=1.0.18">
-  <!-- html2canvas -->
+  <link rel="stylesheet" href="style.css?v=1.0.19">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="app">
-    <!-- Sidebar -->
     <nav class="sidebar">
       <div class="sidebar-header">
         <div class="brand"><h2>GPE</h2></div>
@@ -23,16 +20,15 @@
         <li data-page="historique">Historique</li>
         <li data-page="devis" class="active">Devis</li>
         <li data-page="document">Documents</li>
+        <li data-page="admin">Administration</li> 
       </ul>
     </nav>
 
-    <!-- Main Content -->
     <main class="main-content">
       <button id="toggle-sidebar-mobile" class="toggle-btn-mobile" aria-label="Toggle sidebar">
         <i class="fas fa-bars"></i>
       </button>
 
-      <!-- Devis Page -->
       <section id="devis" class="page active">
         <header><h1>Créer un nouveau devis</h1></header>
         <div class="client-info">
@@ -67,17 +63,36 @@
         </table>
       </section>
 
-      <!-- Historique Page -->
       <section id="historique" class="page">
         <header><h1>Historique des devis</h1></header>
         <ul id="devis-list"></ul>
       </section>
 
-      <!-- Documents Page -->
+      <section id="admin" class="page">
+        <header><h1>Administration</h1></header>
+        <div id="login-container" class="login-container">
+          <h2>Login Administrateur</h2>
+          <div class="input-group"><i class="icon fas fa-user"></i><input type="text" id="admin-username" placeholder="Nom d'utilisateur"/></div>
+          <div class="input-group"><i class="icon fas fa-lock"></i><input type="password" id="admin-password" placeholder="Mot de passe"/></div>
+          <button id="admin-login">Se connecter</button>
+        </div>
+        <div id="admin-content" class="admin-content">
+          <nav class="admin-nav"><ul><li class="admin-active" data-admin-page="convocation">Convocation</li></ul></nav>
+          <section id="convocation" class="admin-page">
+            <div class="convocation-form">
+              <input type="text" id="conv-firstname" placeholder="Prénom" />
+              <input type="text" id="conv-lastname" placeholder="Nom" />
+              <input type="text" id="conv-role" placeholder="Rôle dans l'entreprise" />
+              <textarea id="conv-reason" placeholder="Raison"></textarea>
+              <button id="generate-convocation"><i class="fas fa-file-export"></i> Générer Convocation</button>
+            </div>
+          </section>
+        </div>
+      </section>
+      
       <section id="document" class="page">
         <header><h1>Documents</h1></header>
 
-        <!-- Barre de navigation interne -->
         <nav class="doc-nav">
           <ul>
             <li class="doc-active" data-doc="reglementation">Réglementation</li>
@@ -117,7 +132,6 @@
             <p>Chaque salarié bénéficie de droits (dialogue ouvert, prise en compte des remontées) et doit assumer des devoirs (responsabilités, respect des consignes et de l’équipe).</p>
           </article>
 
-          <!-- Procédure -->
           <article id="procedure" class="doc-article" style="display:none;">
             <h2>PROCÉDURE DE GRAND PARIS ÉVÉNEMENT</h2>
             <p><em>Procédure d’organisation d’un événement — Grand Paris Événement.</em></p>
@@ -147,7 +161,6 @@
             </ol>
           </article>
 
-          <!-- Zone Tarifaire -->
           <article id="zone-tarifaire" class="doc-article" style="display:none;">
             <h2>ZONE TARIFAIRE</h2>
             <div class="table-wrapper">
